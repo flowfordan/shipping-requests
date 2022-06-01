@@ -10,8 +10,8 @@ const Homepage = () => {
     <Split className={styles.split}
     sizes={[35, 65]} expandToMin={true} minSize={300}
     >
-        <div><RequestsTable /></div>
-        <div><TrackingMap /></div>
+        <RequestsTable />
+        <TrackingMap />
     </Split>    
     )
 }

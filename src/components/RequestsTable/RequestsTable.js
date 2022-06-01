@@ -1,6 +1,7 @@
 import styles from './RequestsTable.module.css';
 import React, { useState } from 'react';
-import { Table, Radio, Divider } from 'antd';
+import { Table } from 'antd';
+
 const columns = [
   {
     title: 'Name',
@@ -16,6 +17,7 @@ const columns = [
     dataIndex: 'address',
   },
 ];
+
 const data = [
   {
     key: '1',
@@ -48,8 +50,6 @@ const rowSelection = {
     console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
   },
   getCheckboxProps: (record) => ({
-    disabled: record.name === 'Disabled User',
-    // Column configuration not to be checked
     name: record.name,
   }),
 };
@@ -65,11 +65,12 @@ const RequestsTable = () => {
   
         <Table
           rowSelection={{
-            type: 'checkbox'
+            type: 'checkbox',
+            ...rowSelection
           }}
           columns={columns}
           dataSource={data}
-          scroll={{x: true}}
+          scroll={{x: true, y: true}}
         />
       </div>
     );

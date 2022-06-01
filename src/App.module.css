@@ -1,5 +1,17 @@
 .app{
     display: grid;
     min-height: 100vh;
+    grid-template-columns: minmax(auto, 200px) minmax(700px, 1fr) minmax(auto, 200px);
     grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    "header header header"
+    ". body .";
+}
+
+.header{
+    grid-area: header;
+}
+
+.body{
+    grid-area: body;
 }
