@@ -11,5 +11,12 @@ const chooseRequestsAC = (requests) => {
     }
 }
 
+const toggleLoadingAC = (status) => {
+    return {
+        type: 'TOGGLE_LOADING',
+        status
+    }
+    
+}
 
-export {getRequestsAC, chooseRequestsAC}
+export {getRequestsAC, chooseRequestsAC, toggleLoadingAC}

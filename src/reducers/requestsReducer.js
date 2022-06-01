@@ -1,5 +1,6 @@
 const GET_REQUESTS = 'GET_REQUESTS';
 const CHOOSE_REQUESTS = 'CHOOSE_REQUESTS';
+const TOGGLE_LOADING = 'TOGGLE_LOADING';
 
 let testData = [
     {
@@ -30,23 +31,33 @@ let testData = [
 
 let initialState = {
     requestsData: [],
-    requestsChosen: []
+    requestsChosen: [],
+    isLoading: false
 };
 
-const requestsReducer = (state, action) => {
+const requestsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_REQUESTS:{
             let newRequests = testData;
-            return {...state, requestsData: newRequests}
+            return {
+                ...state, 
+                requestsData: newRequests}
         };
         case CHOOSE_REQUESTS:{
             let testChoose = testData[1]
-            return {...state, requestsChosen: testChoose}
+            return {
+                ...state, 
+                requestsChosen: testChoose}
         };
+        case TOGGLE_LOADING:{
+            return {
+                ...state, 
+                isLoading: action.status}
+        }
         default:
             return state;
     }
 
 }
 
-export {requestsReducer}
+export { requestsReducer }

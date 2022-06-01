@@ -1,4 +1,4 @@
-import { Homepage } from './pages/Homepage/Homepage';
+import Homepage from './pages/Homepage/Homepage';
 import { PageHeader } from 'antd';
 import styles from './App.module.css';
 
