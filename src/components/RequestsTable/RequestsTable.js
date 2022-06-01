@@ -1,103 +1,93 @@
 import styles from './RequestsTable.module.css';
 import React, { useState } from 'react';
-import { Table } from 'antd';
+import { Table, Select } from 'antd';
+
+const { Option } = Select;
+
+const initData = [
+  {
+    key: '1',
+    name: 'Rrquest 1',
+    to: [{id: 0, name: 'point unload 1'}, {id: 1, name: 'point unload 2'}, {id: 2, name: 'point unload 3'}],
+    from: [{id: 0, name: 'point load 1'}, {id: 1, name: 'point load 2'}, {id: 2, name: 'point load 3'}]
+  },
+  {
+    key: '2',
+    name: 'Request 2',
+    to: [{id: 0, name: 'point unload 1'}, {id: 1, name: 'point unload 2'}, {id: 2, name: 'point unload 3'}],
+    from: [{id: 0, name: 'point load 1'}, {id: 1, name: 'point load 2'}, {id: 2, name: 'point load 3'}]
+  },
+  {
+    key: '3',
+    name: 'Request 3',
+    to: [{id: 0, name: 'point unload 1'}, {id: 1, name: 'point unload 2'}, {id: 2, name: 'point unload 3'}],
+    from: [{id: 0, name: 'point load 1'}, {id: 1, name: 'point load 2'}, {id: 2, name: 'point load 3'}]
+  }
+]; // rowSelection object indicates the need for row selection
+
+
 
 const columns = [
   {
-    title: 'Name',
+    title: 'Номер',
+    dataIndex: 'key',
+  },
+
+  {
+    title: 'Наименование',
     dataIndex: 'name',
-    render: (text) => <a>{text}</a>,
+    render: (text) => text
   },
+
   {
-    title: 'Age',
-    dataIndex: 'age',
+    title: 'Пункт загрузки',
+    dataIndex: 'from',
+    render: 
+    (value) => <Select defaultValue={value} style={{
+        width: 120,
+      }}
+      // onChange={handleChange}
+      >
+        <Option value="jack">Jack</Option>
+        <Option value="lucy">Lucy</Option>
+        </Select>
   },
+
   {
-    title: 'Address',
-    dataIndex: 'address',
+    title: 'Пункт разгрузки',
+    dataIndex: 'to',
+    // render: (points) => <Select defaultValue="{points[0].name}" style={{
+    //   width: 120,
+    // }}
+    // // onChange={handleChange}
+    // >
+    //   {/* <Option value="jack">Jack</Option>
+    //   <Option value="lucy">Lucy</Option> */}
+    //   </Select>
   },
 ];
 
 const data = [
   {
     key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
+    name: 'Rrquest 1',
+    to: 'point unload 1',
+    from: 'point load 1'
   },
   {
     key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
+    name: 'Request 2',
+    to: 'point unload 1',
+    from: 'point load 1'
   },
   {
     key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '4',
-    name: 'Disabled User',
-    age: 99,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '5',
-    name: 'Disabled User',
-    age: 99,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '6',
-    name: 'Disabled User',
-    age: 99,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '7',
-    name: 'Disabled User',
-    age: 99,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '8',
-    name: 'Disabled User',
-    age: 99,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '9',
-    name: 'Disabled User',
-    age: 99,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '10',
-    name: 'Disabled User',
-    age: 99,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '8',
-    name: 'Disabled User',
-    age: 99,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '9',
-    name: 'Disabled User',
-    age: 99,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '10',
-    name: 'Disabled User',
-    age: 99,
-    address: 'Sidney No. 1 Lake Park',
-  },
+    name: 'Request 3',
+    to: 'point unload 1',
+    from: 'point load 1'
+  }
 ]; // rowSelection object indicates the need for row selection
+
 
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
@@ -113,6 +103,10 @@ const rowSelection = {
 
 
 const RequestsTable = () => {
+
+    //initial data from mock
+    //request chosen, from, to
+    //[{requestNum: 999, from: 45, to: 54}, {}]
    
     return (
       <div className={styles.tableWrap}>

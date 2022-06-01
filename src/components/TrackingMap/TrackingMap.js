@@ -12,12 +12,12 @@ const ResizeMap = () => {
 
 const TrackingMap = () => {
 
-    const position = [51.505, -0.09]
+    const position = [55.7511, 37.6183]
 
     return(
         <div className={styles.mapWrap}>
         <div className={styles.mapContainer}>
-            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{ height: "100%", width: "100%" }}>
+            <MapContainer center={[55.7511, 37.6183]} zoom={9} scrollWheelZoom={false} style={{ height: "100%", width: "100%" }}>
             <ResizeMap />
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
