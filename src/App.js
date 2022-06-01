@@ -17,6 +17,10 @@ function App() {
       <div className={styles.body}>
         <Homepage />
       </div>
+
+      <div className={styles.footer}>
+        Footer
+      </div>
       
 
     

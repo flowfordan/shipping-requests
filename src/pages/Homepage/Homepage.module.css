@@ -1,8 +1,6 @@
-.block{
-    display: flex;
-    align-items:flex-start;
-    min-height: 100%;
-}
+/* .block{
+    background-color: aqua;
+} */
 
 .split{
     display: flex;

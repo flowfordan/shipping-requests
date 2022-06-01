@@ -43,6 +43,60 @@ const data = [
     age: 99,
     address: 'Sidney No. 1 Lake Park',
   },
+  {
+    key: '5',
+    name: 'Disabled User',
+    age: 99,
+    address: 'Sidney No. 1 Lake Park',
+  },
+  {
+    key: '6',
+    name: 'Disabled User',
+    age: 99,
+    address: 'Sidney No. 1 Lake Park',
+  },
+  {
+    key: '7',
+    name: 'Disabled User',
+    age: 99,
+    address: 'Sidney No. 1 Lake Park',
+  },
+  {
+    key: '8',
+    name: 'Disabled User',
+    age: 99,
+    address: 'Sidney No. 1 Lake Park',
+  },
+  {
+    key: '9',
+    name: 'Disabled User',
+    age: 99,
+    address: 'Sidney No. 1 Lake Park',
+  },
+  {
+    key: '10',
+    name: 'Disabled User',
+    age: 99,
+    address: 'Sidney No. 1 Lake Park',
+  },
+  {
+    key: '8',
+    name: 'Disabled User',
+    age: 99,
+    address: 'Sidney No. 1 Lake Park',
+  },
+  {
+    key: '9',
+    name: 'Disabled User',
+    age: 99,
+    address: 'Sidney No. 1 Lake Park',
+  },
+  {
+    key: '10',
+    name: 'Disabled User',
+    age: 99,
+    address: 'Sidney No. 1 Lake Park',
+  },
 ]; // rowSelection object indicates the need for row selection
 
 const rowSelection = {

@@ -2,10 +2,11 @@
     display: grid;
     min-height: 100vh;
     grid-template-columns: minmax(auto, 200px) minmax(700px, 1fr) minmax(auto, 200px);
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas: 
     "header header header"
-    ". body .";
+    ". body ."
+    "footer footer footer";
 }
 
 .header{
@@ -14,4 +15,8 @@
 
 .body{
     grid-area: body;
+}
+
+.footer{
+    grid-area: footer;
 }

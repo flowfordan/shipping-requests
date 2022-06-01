@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/globals.css'
 import 'antd/dist/antd.css';
+import 'leaflet/dist/leaflet.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
