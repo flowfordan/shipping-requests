@@ -43,12 +43,10 @@ const requestsReducer = (state = initialState, action) => {
                 ...state, 
                 requestsData: newRequests}
         };
-        case CHOOSE_REQUESTS:{
-            let testChoose = testData[1]
+        case CHOOSE_REQUESTS:
             return {
                 ...state, 
-                requestsChosen: testChoose}
-        };
+                requestsChosen: action.requests};
         case TOGGLE_LOADING:{
             return {
                 ...state, 

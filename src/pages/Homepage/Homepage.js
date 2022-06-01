@@ -8,7 +8,8 @@ import { useEffect } from 'react';
 
 const Homepage = ({
     requestsData, isLoading, 
-    requestsChosen, onGetRequests, onToggleLoading
+    requestsChosen, onGetRequests, 
+    onToggleLoading, onChooseRequests
 }) => {
 
     //load set loading, loaded - sent data
@@ -25,7 +26,8 @@ const Homepage = ({
    <Split className={styles.split}
     sizes={[45, 55]} expandToMin={true} minSize={300}
     >
-        <RequestsTable requests={requestsData}/>
+        <RequestsTable requests={requestsData} 
+        onChooseRequests={onChooseRequests}/>
         <TrackingMap requestsChosen={requestsChosen}/>
     </Split> ) 
 

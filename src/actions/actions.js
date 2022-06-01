@@ -6,7 +6,7 @@ const getRequestsAC = () => {
 
 const chooseRequestsAC = (requests) => {
     return {
-        type: 'CHOOSE_REQUEST',
+        type: 'CHOOSE_REQUESTS',
         requests
     }
 }
