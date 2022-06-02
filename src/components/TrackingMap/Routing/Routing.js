@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet-routing-machine";
@@ -7,7 +7,9 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png"
 
 const Routing = ({points}) => {
     const map = useMap();
-  
+
+    console.log('render route')
+
     useEffect(() => {
       if (!map) return;
   

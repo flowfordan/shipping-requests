@@ -73,6 +73,7 @@ const RequestsTable = ({requests, onChooseRequests}) => {
 
   //set active rows/requests
   const handleRequestChoise = (requests) => {
+    
     let activeRequests = requests;
     if(requests){
       activeRequests = requests.map(r => {

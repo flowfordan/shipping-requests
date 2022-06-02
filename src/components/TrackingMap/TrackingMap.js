@@ -15,7 +15,7 @@ const TrackingMap = ({requestsChosen}) => {
     if(requestsChosen.length !== 0){
         renderPoints = requestsChosen.map(r => {
             let from = (
-                <CircleMarker center={r.currentFrom.fromCoords.split(',') } radius={0} >
+                <CircleMarker center={r.currentFrom.fromCoords.split(',') } radius={0} key={r.currentFrom.fromId}>
                     <Tooltip permanent>
                         {`Пункт загрузки No.${r.currentFrom.fromId}`}
                     </Tooltip>
@@ -23,7 +23,7 @@ const TrackingMap = ({requestsChosen}) => {
             );
 
             let to = (
-                <CircleMarker center={r.currentTo.toCoords.split(',')} radius={0}>
+                <CircleMarker center={r.currentTo.toCoords.split(',')} radius={0} key={r.currentTo.toId}>
                     <Tooltip permanent>
                         {`Пункт доставки No.${r.currentTo.toId}`}
                     </Tooltip>
