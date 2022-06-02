@@ -28,23 +28,16 @@ const RequestsTable = ({requests, onChooseRequests}) => {
   const [currentPoints, setPoints] = useState(initData);
   const [currentRow, setRow] = useState([]);
   const [activeRequests, setActiveRequests] = useState([]);
-    //requests id frpm to currentfrom current to
-  console.log(currentPoints);
-  console.log(activeRequests);
-  console.log('row',currentRow)
-  
-// rowSelection object indicates the need for row selection
 
 
-const rowSelection = {
-  onChange: (selectedRowKeys, selectedRow) => {
-    setRow(selectedRow);
-    handleRequestChoise(selectedRow);
-  }
-};
+  const rowSelection = {
+    onChange: (selectedRowKeys, selectedRow) => {
+      setRow(selectedRow);
+      handleRequestChoise(selectedRow);
+    }
+  };
 
   const handlePointChange = (pointId, request, type) => {
-    console.log(pointId, request, type);
     switch(type){
       case 'from':
         setPoints(prevPoints => {

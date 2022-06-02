@@ -12,9 +12,6 @@ const Homepage = ({
     onToggleLoading, onChooseRequests
 }) => {
 
-    //load set loading, loaded - sent data
-   console.log(requestsData, isLoading, requestsChosen)
-
    useEffect(() => {
         onToggleLoading(true);
         onGetRequests();
@@ -48,13 +45,11 @@ const mapStateToProps = ({requestsData, isLoading, requestsChosen}) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-
     return {
          onGetRequests: () => dispatch(getRequestsAC()),
          onChooseRequests: (requests) => dispatch(chooseRequestsAC(requests)),
          onToggleLoading: (status) => dispatch(toggleLoadingAC(status))
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
