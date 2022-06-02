@@ -1,6 +1,11 @@
-const getRequestsAC = () => {
+import RequestsService from "../services/apiService"
+
+const apiService = new RequestsService();
+
+const setRequestsAC = (requests) => {
     return {
-        type: 'GET_REQUESTS'
+        type: 'SET_REQUESTS',
+        requests
     }
 }
 
@@ -19,4 +24,16 @@ const toggleLoadingAC = (status) => {
     
 }
 
-export {getRequestsAC, chooseRequestsAC, toggleLoadingAC}
+const getRequestsAC = () => {
+    return (dispatch) => {
+      apiService.getRequests()
+      .then((data) => {
+        dispatch(setRequestsAC(data));
+      });
+    
+    }
+  };
+
+
+
+export {setRequestsAC, chooseRequestsAC, toggleLoadingAC, getRequestsAC}

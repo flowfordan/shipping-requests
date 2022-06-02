@@ -1,19 +1,12 @@
 import styles from './RequestsTable.module.css';
 import React, { useEffect, useState } from 'react';
 import { Table, Select } from 'antd';
-const { Column, ColumnGroup } = Table;
+const { Column } = Table;
 const { Option } = Select;
 
 
-
-
-
-
-
 const RequestsTable = ({requests, onChooseRequests}) => {
-
-
-  
+ 
   const initData = requests.map(r => {
     return(
       {
@@ -162,9 +155,7 @@ const rowSelection = {
               </Select>
           } 
         />
-
-
-          </Table>
+        </Table>
       </div>
     );
 }

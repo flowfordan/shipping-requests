@@ -26,7 +26,8 @@ const Homepage = ({
    <Split className={styles.split}
     sizes={[45, 55]} expandToMin={true} minSize={300}
     >
-        <RequestsTable requests={requestsData} 
+        <RequestsTable 
+        requests={requestsData} 
         onChooseRequests={onChooseRequests}/>
         <TrackingMap requestsChosen={requestsChosen}/>
     </Split> ) 

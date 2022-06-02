@@ -1,4 +1,4 @@
-const GET_REQUESTS = 'GET_REQUESTS';
+const SET_REQUESTS = 'SET_REQUESTS';
 const CHOOSE_REQUESTS = 'CHOOSE_REQUESTS';
 const TOGGLE_LOADING = 'TOGGLE_LOADING';
 
@@ -37,12 +37,10 @@ let initialState = {
 
 const requestsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_REQUESTS:{
-            let newRequests = testData;
+        case SET_REQUESTS:
             return {
                 ...state, 
-                requestsData: newRequests}
-        };
+                requestsData: action.requests.requestsData};
         case CHOOSE_REQUESTS:
             return {
                 ...state, 
