@@ -26,22 +26,21 @@ const RequestsTable = ({requests, onChooseRequests}) => {
   })
   
   const [currentPoints, setPoints] = useState(initData);
-  const [activeRequests, setActiveRequests] = useState([])
+  const [currentRow, setRow] = useState([]);
+  const [activeRequests, setActiveRequests] = useState([]);
     //requests id frpm to currentfrom current to
   console.log(currentPoints);
-  console.log(activeRequests)
+  console.log(activeRequests);
+  console.log('row',currentRow)
   
 // rowSelection object indicates the need for row selection
 
 
 const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    //dispatch UseEffect selectedids + current points
-    handleRequestChoise(selectedRows)
-  },
-  getCheckboxProps: (record) => ({
-    name: record.name,
-  }),
+  onChange: (selectedRowKeys, selectedRow) => {
+    setRow(selectedRow);
+    handleRequestChoise(selectedRow);
+  }
 };
 
   const handlePointChange = (pointId, request, type) => {
@@ -50,26 +49,36 @@ const rowSelection = {
       case 'from':
         setPoints(prevPoints => {
           return(prevPoints.map( p => {
-            return {
-              ...p,
-              fromPoints: p.fromPoints.map(fp => {
-                if(fp.fromId === pointId){return {...fp, current: true}}
-                return {...fp, current: false}
-              })
+            if(p.requestId === request.requestId){
+              return {
+                ...p,
+                fromPoints: p.fromPoints.map(fp => {
+                  if(fp.fromId === pointId){
+                    return {...fp, current: true}
+                  }
+                  return {...fp, current: false}
+                })
+              }
             }
+            return p
           }))
         }) 
         return;
       case 'to':
         setPoints(prevPoints => {
           return(prevPoints.map( p => {
-            return {
-              ...p,
-              toPoints: p.toPoints.map(fp => {
-                if(fp.toId === pointId){return {...fp, current: true}}
-                return {...fp, current: false}
-              })
+            if(p.requestId === request.requestId){
+              return {
+                ...p,
+                toPoints: p.toPoints.map(fp => {
+                  if(fp.toId === pointId){
+                    return {...fp, current: true}
+                  }
+                  return {...fp, current: false}
+                })
+              }
             }
+            return p
           }))
         }) 
         return;
@@ -79,7 +88,9 @@ const rowSelection = {
 
 
   const handleRequestChoise = (requests) => {
-    let activeRequests = requests.map(r => {
+    let activeRequests = requests;
+    if(requests){
+      activeRequests = requests.map(r => {
       return(
         {
           requestId: r.requestId,
@@ -88,22 +99,40 @@ const rowSelection = {
         }
       )
     })
+    }
     setActiveRequests(activeRequests);
   }
 
-
+  //update row if points changed
   useEffect(() => {
-    //dispatch to redux
+    if(currentPoints && currentRow.length !== 0){
+      let updPoint = currentPoints.find(p => p.requestId === currentRow[0].requestId)
+      if(updPoint){
+        setRow([updPoint])
+      }
+    }   
+  },
+  [currentPoints])
+
+  //upd active requests
+  useEffect(() => {
+    handleRequestChoise(currentRow)
+  }, 
+  [currentRow])
+
+  //dispatch redux
+  useEffect(() => {
     onChooseRequests(activeRequests)
   }, 
   [activeRequests])
+
 
 
     return (
       <div className={styles.tableWrap}>
         <Table
           rowSelection={{
-            type: 'checkbox',
+            type: 'radio',
             ...rowSelection
           }}
           dataSource={currentPoints}
