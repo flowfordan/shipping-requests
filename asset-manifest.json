@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/shipping-requests/static/css/main.d4c3a6fb.css",
+    "main.js": "/shipping-requests/static/js/main.c7d88443.js",
+    "index.html": "/shipping-requests/index.html",
+    "main.d4c3a6fb.css.map": "/shipping-requests/static/css/main.d4c3a6fb.css.map",
+    "main.c7d88443.js.map": "/shipping-requests/static/js/main.c7d88443.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d4c3a6fb.css",
+    "static/js/main.c7d88443.js"
+  ]
+}
