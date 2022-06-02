@@ -1,5 +1,6 @@
 import styles from './Homepage.module.css';
 import { RequestsTable, TrackingMap } from '../../components';
+import { Spin } from 'antd';
 import Split from 'react-split';
 import { connect } from "react-redux";
 import { getRequestsAC, chooseRequestsAC, toggleLoadingAC } from '../../actions/actions';
@@ -31,7 +32,7 @@ const Homepage = ({
 
    return(
     <div className={styles.block}>
-    {isLoading? 'loading' : dataView}  
+    {isLoading? <Spin size="large" tip="Загрузка..."/> : dataView}  
     </div>  
     )
 }

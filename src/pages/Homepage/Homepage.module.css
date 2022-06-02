@@ -1,6 +1,8 @@
-/* .block{
-    background-color: aqua;
-} */
+.block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .split{
     display: flex;

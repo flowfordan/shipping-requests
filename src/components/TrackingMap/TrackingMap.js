@@ -1,45 +1,39 @@
 import styles from './TrackingMap.module.css';
-import { MapContainer, TileLayer, Marker, useMap, Tooltip } from 'react-leaflet';
-import markerIconPng from "leaflet/dist/images/marker-icon.png"
-import {Icon} from 'leaflet';
+import { MapContainer, TileLayer, useMap, Tooltip, CircleMarker } from 'react-leaflet';
 import Routing from './Routing/Routing';
-
 
 const ResizeMap = () => {
     const map = useMap();
     map._onResize();
     return null;
-  };
+};
 
 const TrackingMap = ({requestsChosen}) => {
 
     let renderPoints = null;
     let renderRoute = null;
     if(requestsChosen.length !== 0){
-
         renderPoints = requestsChosen.map(r => {
-        let from = (
-            <Marker position={r.currentFrom.fromCoords.split(',')} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+            let from = (
+                <CircleMarker center={r.currentFrom.fromCoords.split(',') } radius={0} >
                     <Tooltip permanent>
                         {`Пункт загрузки No.${r.currentFrom.fromId}`}
                     </Tooltip>
-            </Marker>
-        );
+                </CircleMarker>
+            );
 
-        let to = (
-            <Marker position={r.currentTo.toCoords.split(',')} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+            let to = (
+                <CircleMarker center={r.currentTo.toCoords.split(',')} radius={0}>
                     <Tooltip permanent>
-                    {`Пункт доставки No.${r.currentTo.toId}`}
+                        {`Пункт доставки No.${r.currentTo.toId}`}
                     </Tooltip>
-            </Marker>
-        )
-        return(
-            [from, to]
-        )
-    }).flat();
+                </CircleMarker>
+            )
+            return([from, to])
+        }).flat();
 
         renderRoute = (<Routing points={[requestsChosen[0].currentFrom.fromCoords.split(','), requestsChosen[0].currentTo.toCoords.split(',')]}/>)
-    }
+    };
 
     return(
         <div className={styles.mapWrap}>
